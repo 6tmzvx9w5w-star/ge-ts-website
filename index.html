@@ -4,83 +4,251 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>T.S.GLOBAL IMPORT EXPORT</title>
-  <meta name="description" content="Import & Export zwischen Europa und Südasien. Einkauf, Beschaffung, Export, Import, Verkauf." />
+  <meta name="description" content="T.S.GLOBAL IMPORT EXPORT. Einkauf, Beschaffung, Import, Export. Lieferung zwischen Europa und Südasien." />
 
   <style>
     :root{
       --blue:#1f7aa6;
       --orange:#c7762b;
-      --black:#111111;
-      --text:#1b1b1b;
-      --muted:#5a5a5a;
+      --black:#0b0b0e;
+      --text:#111114;
+      --muted:#5a5f6a;
+      --line:rgba(17,17,20,.10);
+      --card:rgba(255,255,255,.72);
       --bg:#ffffff;
-      --card:#f7f7f7;
-      --line:#e6e6e6;
-      --radius:16px;
+
+      --shadow: 0 18px 55px rgba(0,0,0,.10);
+      --shadow2: 0 10px 24px rgba(0,0,0,.10);
+      --radius: 22px;
+      --radius2: 16px;
+
+      --max: 1120px;
     }
 
     *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
     body{
       margin:0;
       font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
       color:var(--text);
-      background:var(--bg);
+      background: var(--bg);
       line-height:1.55;
+      text-rendering: geometricPrecision;
     }
 
-    .wrap{max-width:1100px; margin:0 auto; padding:28px 20px}
-    .topbar{
-      display:flex; align-items:center; justify-content:space-between;
-      gap:18px; padding:14px 0;
-    }
-    .brand{display:flex; align-items:center; gap:14px}
-    .brand img{
-      width:52px; height:52px; object-fit:contain;
-      border-radius:12px; background:#fff;
-    }
-    .brand .name{font-weight:900; letter-spacing:.6px; color:var(--black)}
-    .brand .tag{color:var(--muted); font-size:14px}
+    a{color:inherit}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
 
+    .noise{
+      position:fixed;
+      inset:0;
+      pointer-events:none;
+      opacity:.06;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='.8'/%3E%3C/svg%3E");
+      mix-blend-mode:multiply;
+    }
+
+    .top{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(14px);
+      background: rgba(255,255,255,.72);
+      border-bottom:1px solid var(--line);
+    }
+
+    .topRow{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      padding:14px 0;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:240px;
+    }
+
+    .logo{
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      background:#fff;
+      border:1px solid var(--line);
+      display:grid;
+      place-items:center;
+      overflow:hidden;
+    }
+    .logo img{width:70%; height:70%; object-fit:contain}
+
+    .brandText{display:flex; flex-direction:column; gap:2px}
+    .brandText .name{
+      font-weight:900;
+      letter-spacing:.6px;
+      font-size:14px;
+      color:var(--black);
+      text-transform:uppercase;
+    }
+    .brandText .sub{font-size:12.5px; color:var(--muted)}
+
+    nav{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
     nav a{
-      color:var(--text); text-decoration:none; font-weight:600; margin-left:14px;
+      text-decoration:none;
+      font-weight:700;
+      font-size:13px;
+      color:rgba(17,17,20,.78);
+      padding:10px 12px;
+      border-radius:999px;
     }
-    nav a:hover{color:var(--blue)}
+    nav a:hover{
+      background:rgba(31,122,166,.09);
+      color:var(--blue);
+    }
 
     .hero{
-      margin-top:10px;
+      position:relative;
+      overflow:hidden;
+      padding:64px 0 40px 0;
+    }
+
+    .bgGlow{
+      position:absolute;
+      inset:-80px -50px auto -50px;
+      height:520px;
+      background:
+        radial-gradient(900px 420px at 12% 20%, rgba(31,122,166,.18), transparent 60%),
+        radial-gradient(700px 360px at 55% 10%, rgba(199,118,43,.20), transparent 60%),
+        radial-gradient(800px 420px at 90% 35%, rgba(31,122,166,.12), transparent 60%);
+      filter:saturate(1.1);
+      pointer-events:none;
+    }
+
+    .heroCard{
+      position:relative;
       border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:28px;
-      background: linear-gradient(180deg, #ffffff 0%, #fbfbfb 100%);
+      border-radius: calc(var(--radius) + 6px);
+      background: linear-gradient(180deg, rgba(255,255,255,.82), rgba(255,255,255,.64));
+      box-shadow: var(--shadow);
+      padding:34px;
     }
+
     .kicker{
-      display:inline-flex; align-items:center; gap:10px;
-      font-weight:800; letter-spacing:.3px;
-      color:var(--blue);
-      margin:0 0 8px 0;
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      font-weight:900;
+      font-size:13px;
+      letter-spacing:.3px;
+      color:rgba(31,122,166,.95);
     }
-    .kicker .dot{width:10px; height:10px; border-radius:99px; background:var(--orange)}
+    .kicker .dot{
+      width:10px; height:10px; border-radius:999px;
+      background:var(--orange);
+      box-shadow: 0 0 0 6px rgba(199,118,43,.12);
+    }
+
     h1{
-      margin:0 0 10px 0;
-      font-size: clamp(28px, 4vw, 46px);
-      line-height:1.12;
+      margin:14px 0 10px 0;
+      font-size: clamp(34px, 4.6vw, 58px);
+      line-height:1.08;
+      letter-spacing:-.02em;
       color:var(--black);
     }
-    .lead{margin:0 0 18px 0; font-size:18px; color:#2a2a2a; max-width:70ch}
 
-    .ctaRow{display:flex; gap:12px; flex-wrap:wrap; margin-top:14px}
-    .btn{
-      display:inline-flex; align-items:center; justify-content:center;
-      padding:12px 16px;
-      border-radius:12px;
-      text-decoration:none;
-      font-weight:800;
-      border:1px solid var(--line);
+    .lead{
+      margin:0;
+      font-size:18px;
+      color:rgba(17,17,20,.78);
+      max-width:70ch;
     }
-    .btn.primary{background:var(--blue); color:white; border-color:var(--blue)}
-    .btn.primary:hover{filter:brightness(.95)}
-    .btn.ghost{background:white; color:var(--text)}
-    .btn.ghost:hover{border-color:var(--blue); color:var(--blue)}
+
+    .heroActions{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      margin-top:22px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:12px 16px;
+      border-radius:14px;
+      text-decoration:none;
+      font-weight:900;
+      border:1px solid var(--line);
+      transition: transform .12s ease, filter .12s ease, background .12s ease;
+      user-select:none;
+    }
+
+    .btn:active{transform: translateY(1px)}
+    .btnPrimary{
+      background: linear-gradient(135deg, rgba(31,122,166,1), rgba(20,94,130,1));
+      color:#fff;
+      border-color: rgba(31,122,166,.55);
+      box-shadow: 0 16px 40px rgba(31,122,166,.22);
+    }
+    .btnPrimary:hover{filter:brightness(.98)}
+    .btnGhost{
+      background: rgba(255,255,255,.82);
+      color:rgba(17,17,20,.86);
+    }
+    .btnGhost:hover{background: rgba(31,122,166,.07); color:var(--blue); border-color: rgba(31,122,166,.25)}
+
+    .miniStats{
+      display:grid;
+      grid-template-columns: repeat(12,1fr);
+      gap:14px;
+      margin-top:22px;
+    }
+
+    .stat{
+      grid-column: span 4;
+      border:1px solid var(--line);
+      border-radius: var(--radius2);
+      background: rgba(255,255,255,.76);
+      padding:14px 14px 12px 14px;
+      box-shadow: var(--shadow2);
+    }
+    .stat b{display:block; font-size:14px; color:var(--black); margin-bottom:4px}
+    .stat span{color:var(--muted); font-size:13px}
+
+    .section{
+      padding:54px 0;
+    }
+
+    .sectionHead{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:16px;
+      margin-bottom:16px;
+    }
+
+    .sectionHead h2{
+      margin:0;
+      font-size:26px;
+      letter-spacing:-.01em;
+      color:var(--black);
+    }
+
+    .subhead{
+      margin:0;
+      color:rgba(17,17,20,.70);
+      max-width:72ch;
+      font-size:14.5px;
+    }
 
     .grid{
       display:grid;
@@ -90,170 +258,295 @@
     }
 
     .card{
+      grid-column: span 6;
       border:1px solid var(--line);
-      border-radius:var(--radius);
-      background:var(--card);
+      border-radius: var(--radius);
+      background: var(--card);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow2);
       padding:18px;
     }
-    .card h3{margin:0 0 8px 0; color:var(--black)}
-    .card p{margin:0; color:var(--muted)}
-    .pill{
-      display:inline-block;
-      padding:6px 10px;
+
+    .cardTitle{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-bottom:10px;
+    }
+
+    .icon{
+      width:42px;
+      height:42px;
+      border-radius: 16px;
+      background: rgba(31,122,166,.10);
+      border: 1px solid rgba(31,122,166,.18);
+      display:grid;
+      place-items:center;
+    }
+    .icon.orange{
+      background: rgba(199,118,43,.12);
+      border: 1px solid rgba(199,118,43,.22);
+    }
+    .card h3{margin:0; font-size:16px; color:var(--black); letter-spacing:.1px}
+    .card p{margin:0; color:rgba(17,17,20,.72); font-size:14px}
+
+    .tags{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin-top:16px;
+    }
+    .tag{
+      padding:8px 12px;
       border-radius:999px;
-      background:#ffffff;
       border:1px solid var(--line);
+      background: rgba(255,255,255,.86);
       font-weight:800;
-      color:var(--black);
       font-size:13px;
-      margin:0 8px 8px 0;
+      color:rgba(17,17,20,.82);
     }
-    .sectionTitle{
-      margin:42px 0 12px 0;
-      font-size:22px;
-      color:var(--black);
-      letter-spacing:.2px;
-    }
-    .accentLine{
-      height:3px; width:86px; border-radius:99px;
-      background: linear-gradient(90deg, var(--orange), var(--blue));
-      margin:10px 0 0 0;
+    .tag.accent{
+      border-color: rgba(31,122,166,.25);
+      background: rgba(31,122,166,.06);
+      color: rgba(31,122,166,1);
     }
 
-    .twoCol{grid-column: span 6}
-    .full{grid-column: span 12}
+    .contactGrid .card{grid-column: span 6}
+    .contactLine{margin:8px 0 0 0; color:rgba(17,17,20,.72); font-size:14px}
+    .contactLine a{color:var(--blue); font-weight:900; text-decoration:none}
+    .contactLine a:hover{text-decoration:underline}
 
-    .contactBox{
-      background:white;
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:18px;
-    }
-    .contactBox a{color:var(--blue); text-decoration:none; font-weight:800}
-    .contactBox a:hover{text-decoration:underline}
-
-    footer{
-      margin-top:46px;
-      padding-top:18px;
+    .footer{
       border-top:1px solid var(--line);
-      color:var(--muted);
+      padding:18px 0 34px 0;
+      color:rgba(17,17,20,.56);
       font-size:13px;
+    }
+    .footerRow{
       display:flex;
       justify-content:space-between;
-      gap:12px;
+      align-items:center;
       flex-wrap:wrap;
+      gap:10px;
     }
-    footer a{color:var(--muted); text-decoration:none; font-weight:700; margin-left:12px}
-    footer a:hover{color:var(--blue)}
+    .footer a{color:rgba(17,17,20,.62); font-weight:800; text-decoration:none; margin-left:12px}
+    .footer a:hover{color:var(--blue)}
 
-    @media (max-width:900px){
+    @media (max-width: 900px){
       nav{display:none}
-      .twoCol{grid-column: span 12}
+      .card{grid-column: span 12}
+      .stat{grid-column: span 12}
+      .heroCard{padding:22px}
     }
   </style>
 </head>
 
 <body>
-  <div class="wrap">
-    <header class="topbar">
-      <div class="brand">
-        <img src="assets/logo.png" alt="T.S.Global Logo" />
+  <div class="noise"></div>
+
+  <header class="top">
+    <div class="wrap">
+      <div class="topRow">
+        <div class="brand">
+          <div class="logo">
+            <img src="assets/logo.png" alt="Logo" />
+          </div>
+          <div class="brandText">
+            <div class="name">T.S.GLOBAL IMPORT EXPORT</div>
+            <div class="sub">Import und Export zwischen Europa und Südasien</div>
+          </div>
+        </div>
+
+        <nav>
+          <a href="#leistungen">Leistungen</a>
+          <a href="#warengruppen">Warengruppen</a>
+          <a href="#kontakt">Kontakt</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="bgGlow"></div>
+
+    <div class="wrap">
+      <div class="heroCard">
+        <div class="kicker"><span class="dot"></span>Wir haben, was Sie suchen</div>
+
+        <h1>Handel, Beschaffung,<br>Import und Export</h1>
+
+        <p class="lead">
+          Wir unterstützen Geschäftskunden und Endkunden bei der Beschaffung ausgewählter Waren,
+          der Koordination von Import und Export sowie der Lieferung zwischen Europa und Südasien.
+        </p>
+
+        <div class="heroActions">
+          <a class="btn btnPrimary" href="mailto:Globalimport@hotmail.com">
+            <span>Anfrage per E Mail</span>
+            <span aria-hidden="true">→</span>
+          </a>
+          <a class="btn btnGhost" href="#leistungen">Leistungen ansehen</a>
+        </div>
+
+        <div class="miniStats" aria-label="Kurzprofil">
+          <div class="stat">
+            <b>Fokus</b>
+            <span>Europa und Südasien</span>
+          </div>
+          <div class="stat">
+            <b>Leistung</b>
+            <span>Einkauf, Import, Export, Verkauf</span>
+          </div>
+          <div class="stat">
+            <b>Kontakt</b>
+            <span>Schnelle Abstimmung per Telefon oder E Mail</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="leistungen">
+    <div class="wrap">
+      <div class="sectionHead">
         <div>
-          <div class="name">T.S.GLOBAL IMPORT EXPORT</div>
-          <div class="tag">Import & Export zwischen Europa und Südasien</div>
-        </div>
-      </div>
-
-      <nav>
-        <a href="#leistungen">Leistungen</a>
-        <a href="#produkte">Warengruppen</a>
-        <a href="#kontakt">Kontakt</a>
-      </nav>
-    </header>
-
-    <main class="hero">
-      <div class="kicker"><span class="dot"></span>Wir haben, was Sie suchen</div>
-      <h1>Handel, Beschaffung, Import & Export</h1>
-      <p class="lead">
-        T.S.GLOBAL IMPORT EXPORT unterstützt Geschäftskunden und Endkunden bei der Beschaffung,
-        dem grenzüberschreitenden Warenverkehr und der Lieferung zwischen Europa und Südasien.
-      </p>
-
-      <div class="ctaRow">
-        <a class="btn primary" href="mailto:Globalimport@hotmail.com">Anfrage per E Mail</a>
-        <a class="btn ghost" href="#leistungen">Leistungen ansehen</a>
-      </div>
-
-      <div class="grid" id="leistungen">
-        <div class="card twoCol">
-          <h3>Einkauf & Beschaffung</h3>
-          <p>Beschaffung ausgewählter Waren, Abstimmung von Mengen, Qualität und Lieferbedingungen.</p>
-        </div>
-        <div class="card twoCol">
-          <h3>Import & Export</h3>
-          <p>Koordination von Versand, Dokumenten und Übergabe bis zur Lieferung.</p>
-        </div>
-        <div class="card twoCol">
-          <h3>Verkauf</h3>
-          <p>Belieferung von Unternehmen und ausgewählten Endkunden auf Anfrage.</p>
-        </div>
-        <div class="card twoCol">
-          <h3>Kommunikation</h3>
-          <p>Direkte Abstimmung, klare Schritte, nachvollziehbare Abwicklung.</p>
-        </div>
-      </div>
-
-      <h2 class="sectionTitle" id="produkte">Warengruppen</h2>
-      <div class="accentLine"></div>
-
-      <div class="grid">
-        <div class="card full" style="background:#fff">
-          <span class="pill">Elektro</span>
-          <span class="pill">Haushaltswaren</span>
-          <span class="pill">Textilien</span>
-          <span class="pill">Mode</span>
-          <span class="pill">Kosmetik</span>
-          <span class="pill">Telekommunikationswaren</span>
-          <span class="pill">Autoteile</span>
-          <span class="pill">Lederwaren</span>
-          <span class="pill">u. v. m.</span>
-          <p style="margin-top:10px; color:var(--muted)">
-            Verfügbarkeit abhängig von Herkunft, Saison und Nachfrage. Konkrete Angebote auf Anfrage.
+          <h2>Leistungen</h2>
+          <p class="subhead">
+            Klare Abläufe, direkte Kommunikation, saubere Koordination. Keine Show, nur Lieferung.
           </p>
         </div>
       </div>
 
-      <h2 class="sectionTitle" id="kontakt">Kontakt</h2>
-      <div class="accentLine"></div>
-
       <div class="grid">
-        <div class="contactBox twoCol">
-          <div style="font-weight:900; color:var(--black); margin-bottom:6px">T.S.GLOBAL IMPORT EXPORT</div>
-          <div style="color:var(--muted)">Adolfstraße 92<br>65307 Bad Schwalbach<br>Germany</div>
+        <div class="card">
+          <div class="cardTitle">
+            <div class="icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M4 7h16M7 7V5a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M6 7l1 14h10l1-14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Einkauf und Beschaffung</h3>
+          </div>
+          <p>Beschaffung ausgewählter Waren, Abstimmung von Mengen, Qualität und Lieferbedingungen.</p>
         </div>
 
-        <div class="contactBox twoCol">
-          <div style="margin-bottom:10px">
-            Tel: <a href="tel:+491772164104">+49 1772164104</a>
+        <div class="card">
+          <div class="cardTitle">
+            <div class="icon orange">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M3 12h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M15 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M9 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h3>Import und Export</h3>
           </div>
-          <div>
-            E Mail: <a href="mailto:Globalimport@hotmail.com">Globalimport@hotmail.com</a>
+          <p>Koordination von Versand, Dokumenten und Übergabe bis zur Lieferung.</p>
+        </div>
+
+        <div class="card">
+          <div class="cardTitle">
+            <div class="icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M3 7h18v10H3z" stroke="currentColor" stroke-width="2" />
+                <path d="M7 7V5h10v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                <path d="M7 17v2h10v-2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Verkauf</h3>
           </div>
-          <div style="margin-top:10px; color:var(--muted); font-size:13px">
-            Ansprechpartner: T. Shrestha (Gesellschafter)
+          <p>Belieferung von Unternehmen und ausgewählten Endkunden auf Anfrage.</p>
+        </div>
+
+        <div class="card">
+          <div class="cardTitle">
+            <div class="icon orange">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                <path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v8z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M8 8h8M8 12h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>Kommunikation</h3>
           </div>
+          <p>Direkte Abstimmung, klare Schritte, nachvollziehbare Abwicklung.</p>
         </div>
       </div>
-    </main>
+    </div>
+  </section>
 
-    <footer>
-      <div>© <span id="y"></span> T.S.GLOBAL IMPORT EXPORT</div>
-      <div>
-        <a href="impressum.html">Impressum</a>
-        <a href="datenschutz.html">Datenschutz</a>
+  <section class="section" id="warengruppen">
+    <div class="wrap">
+      <div class="sectionHead">
+        <div>
+          <h2>Warengruppen</h2>
+          <p class="subhead">
+            Breites Spektrum. Konkrete Verfügbarkeit abhängig von Herkunft, Saison und Nachfrage.
+          </p>
+        </div>
       </div>
-    </footer>
-  </div>
+
+      <div class="card" style="padding:22px">
+        <div class="tags">
+          <span class="tag accent">Elektro</span>
+          <span class="tag">Haushaltswaren</span>
+          <span class="tag">Textilien</span>
+          <span class="tag">Mode</span>
+          <span class="tag">Kosmetik</span>
+          <span class="tag">Telekommunikationswaren</span>
+          <span class="tag">Autoteile</span>
+          <span class="tag">Lederwaren</span>
+          <span class="tag">u. v. m.</span>
+        </div>
+        <p class="contactLine" style="margin-top:14px">
+          Angebote und Spezifikationen erhalten Sie auf Anfrage per E Mail oder Telefon.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="kontakt">
+    <div class="wrap">
+      <div class="sectionHead">
+        <div>
+          <h2>Kontakt</h2>
+          <p class="subhead">
+            Anfrage kurz formulieren. Produkt, Menge, Zielort. Dann gibt es eine klare Antwort.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid contactGrid">
+        <div class="card">
+          <h3 style="margin:0 0 10px 0">T.S.GLOBAL IMPORT EXPORT</h3>
+          <p style="margin:0; color:rgba(17,17,20,.72); font-size:14px">
+            Adolfstraße 92<br>
+            65307 Bad Schwalbach<br>
+            Germany
+          </p>
+        </div>
+
+        <div class="card">
+          <h3 style="margin:0 0 10px 0">Direktkontakt</h3>
+          <p class="contactLine">Tel: <a href="tel:+491772164104">+49 1772164104</a></p>
+          <p class="contactLine">E Mail: <a href="mailto:Globalimport@hotmail.com">Globalimport@hotmail.com</a></p>
+          <p class="contactLine" style="color:rgba(17,17,20,.62)">Ansprechpartner: T. Shrestha</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="wrap">
+      <div class="footerRow">
+        <div>© <span id="y"></span> T.S.GLOBAL IMPORT EXPORT</div>
+        <div>
+          <a href="impressum.html">Impressum</a>
+          <a href="datenschutz.html">Datenschutz</a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <script>
     document.getElementById("y").textContent = new Date().getFullYear();
