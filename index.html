@@ -69,15 +69,15 @@
       min-width:260px;
     }
     .logo{
-      width:46px;
-      height:46px;
-      border-radius:16px;
+      width:52px;
+      height:52px;
+      border-radius:18px;
       background:#fff;
       border:1px solid var(--line);
       display:grid;
       place-items:center;
       overflow:hidden;
-      box-shadow: 0 12px 26px rgba(0,0,0,.10);
+      box-shadow: 0 16px 36px rgba(0,0,0,.14);
     }
     .logo img{width:78%; height:78%; object-fit:contain}
 
@@ -85,7 +85,7 @@
     .brandText .name{
       font-weight:900;
       letter-spacing:.7px;
-      font-size:13.5px;
+      font-size:14.5px;
       color:var(--black);
       text-transform:uppercase;
     }
@@ -264,6 +264,7 @@
       box-shadow: var(--shadow2);
       padding:18px;
       overflow:hidden;
+      transition: transform .18s ease;
     }
 
     .cardTitle{
@@ -298,6 +299,7 @@
       overflow:hidden;
       box-shadow: var(--shadow2);
       background:#fff;
+      transition: transform .18s ease;
     }
     .photoCard img{
       width:100%;
@@ -311,6 +313,11 @@
     }
     .photoCap b{display:block; color:var(--black); margin-bottom:4px}
     .photoCap span{color:var(--muted); font-size:13px}
+
+    .card:hover,
+    .photoCard:hover{
+      transform: translateY(-2px);
+    }
 
     .tags{
       display:flex;
@@ -454,16 +461,15 @@
           <p>Koordination von Versand, Dokumenten und Übergabe bis zur Lieferung.</p>
         </div>
 
-     <div class="photoCard">
-  <img 
-    alt="Container Terminal" 
-    src="https://images.unsplash.com/photo-1565891741441-64926e441838?auto=format&fit=crop&w=1800&q=80">
-  <div class="photoCap">
-    <b>Internationale Logistik</b>
-    <span>Transport, Umschlag und Koordination entlang der Lieferkette.</span>
-  </div>
-</div>
-
+        <div class="photoCard">
+          <img 
+            alt="Container Terminal" 
+            src="https://images.unsplash.com/photo-1565891741441-64926e441838?auto=format&fit=crop&w=1800&q=80">
+          <div class="photoCap">
+            <b>Internationale Logistik</b>
+            <span>Transport, Umschlag und Koordination entlang der Lieferkette.</span>
+          </div>
+        </div>
 
         <div class="photoCard">
           <img alt="Lager und Verpackung" src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=1800&q=80">
